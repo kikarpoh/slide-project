@@ -6,7 +6,6 @@ import {
   Step,
   STATUS,
   TooltipRenderProps,
-  CallBackProps,
   EVENTS,
 } from "react-joyride";
 import { motion, AnimatePresence } from "framer-motion";
@@ -481,7 +480,7 @@ export default function PPTHybridRenderStep() {
   const isPptLoaded = !isLoadingPdf && sequence.length > 0;
 
   // 💡 Joyride callback 处理居中与受控状态同步
-  const handleJoyrideCallback = (data: CallBackProps) => {
+  const handleJoyrideCallback = (data:any) => {
     const { type, step, status } = data;
 
     if (type === EVENTS.STEP_BEFORE || type === EVENTS.TOOLTIP) {
@@ -513,18 +512,23 @@ export default function PPTHybridRenderStep() {
     steps: TOUR_STEPS,
     run: runTour, // 受控模式核心：将运行与 state 完全绑定
     continuous: true,
-    showSkipButton: true,
     tooltipComponent: CustomTooltip,
     scrollToFirstStep: true,
-    scrollOffset: 150,
-    scrollDuration: 300,
-    disableScrollParentFix: false,
-    callback: handleJoyrideCallback,
-    floaterProps: {
-      preventOverflow: {
-        boundariesElement: "viewport",
-      },
+    
+    options:{
+      scrollOffset: 150,
+      scrollDuration: 300,
+      // showSkipButton: true,
+      skipBeacon:true
+    
+    // disableScrollParentFix: false,
+
     },
+
+    // floatingOptions
+
+    // callback: handleJoyrideCallback,
+  
     styles: {
                overlay:{
                 color:'rgba(15, 23, 42, 0.45)',

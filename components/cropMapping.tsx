@@ -530,43 +530,47 @@ export default function PDFCropMappingStep({
     const [pptxNodeLabel, setPptxNodeLabel] = useState<string>("");
 
     // 💡 强行精准滚动的 Callback
-    const handleJoyrideCallback = (data: CallBackProps) => {
-        const { type, step } = data;
+    // const handleJoyrideCallback = (data: CallBackProps) => {
+    //     const { type, step } = data;
 
-        if (type === EVENTS.STEP_BEFORE || type === EVENTS.TOOLTIP) {
-            const targetElement = typeof step.target === 'string' 
-                ? document.querySelector(step.target) 
-                : step.target;
+    //     if (type === EVENTS.STEP_BEFORE || type === EVENTS.TOOLTIP) {
+    //         const targetElement = typeof step.target === 'string' 
+    //             ? document.querySelector(step.target) 
+    //             : step.target;
 
-            if (targetElement) {
-                setTimeout(() => {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'center', // 强制滚动到视口正中央
-                        inline: 'nearest'
-                    });
-                }, 80);
-            }
-        }
-    };
+    //         if (targetElement) {
+    //             setTimeout(() => {
+    //                 targetElement.scrollIntoView({
+    //                     behavior: 'smooth',
+    //                     block: 'center', // 强制滚动到视口正中央
+    //                     inline: 'nearest'
+    //                 });
+    //             }, 80);
+    //         }
+    //     }
+    // };
 
     // 💡 优化配置 Popper 参数
     const { controls, Tour } = useJoyride({
         steps: TOUR_STEPS,
         continuous: true,
-        showSkipButton: true,
         tooltipComponent: CustomTooltip,
-        scrollToFirstStep: true,
-        scrollOffset: 150,
-        scrollDuration: 300,
-        disableScrollParentFix: false,
-        callback: handleJoyrideCallback,
-        floaterProps: {
-            // 防溢出关键属性：如果边界受限会自动修饰或翻转
-            preventOverflow: {
-                boundariesElement: 'viewport',
-            },
-        },
+        options:{
+      scrollOffset: 150,
+      scrollDuration: 300,
+      // showSkipButton: true,
+      skipBeacon:true
+    
+    // disableScrollParentFix: false,
+
+    },
+        // callback: handleJoyrideCallback,
+        // floaterProps: {
+        //     // 防溢出关键属性：如果边界受限会自动修饰或翻转
+        //     preventOverflow: {
+        //         boundariesElement: 'viewport',
+        //     },
+        // },
         styles: {
             overlay:{
                 color:'rgba(15, 23, 42, 0.45)',
