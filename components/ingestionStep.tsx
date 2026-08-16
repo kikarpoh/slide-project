@@ -46,7 +46,7 @@ const TOUR_STEPS: Step[] = [
     target: '[data-tour="source-upload"]',
     title: "1. 注入源数据文档",
     content: "支持拖拽或点击上传 PDF 报表/PPTX 资料。系统会自动解析结构用于后续的截图与框选。",
-    disableBeacon: true,
+    skipBeacon: true,
   },
   {
     target: '[data-tour="ppt-upload"]',
@@ -140,13 +140,14 @@ export default function DataIngestionStep({ onConfirm }: DataIngestionProps) {
   const { controls, Tour } = useJoyride({
     steps: TOUR_STEPS,
     continuous: true,
-    showSkipButton: true,
+    // showSkipButton: true,
+    
     tooltipComponent: CustomTooltip,
     styles: {
-      options: {
-        overlayColor: 'rgba(15, 23, 42, 0.45)',
-        zIndex: 10000,
-      },
+              overlay:{
+                color:'rgba(15, 23, 42, 0.45)',
+                zIndex:100000
+            },
     },
   });
 

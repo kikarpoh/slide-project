@@ -196,7 +196,7 @@ function getMediaUrl(item?: Partial<NodesType> | null): string {
   if (!item) return "";
 
 
-  if(item.type!== "upload_pptx") return item.img_data;
+  if(item.type!== "upload_pptx") return (item as any).img_data;
 
   const urlOrName = item.url || item.fileName;
   if (!urlOrName) return "";
@@ -526,10 +526,10 @@ export default function PPTHybridRenderStep() {
       },
     },
     styles: {
-      options: {
-        overlayColor: "rgba(15, 23, 42, 0.45)",
-        zIndex: 10000,
-      },
+               overlay:{
+                color:'rgba(15, 23, 42, 0.45)',
+                zIndex:100000
+            },
     },
   });
 

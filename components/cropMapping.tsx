@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from "react";
-import { useJoyride, Step, TooltipRenderProps, CallBackProps, EVENTS } from "react-joyride";
+import { useJoyride, Step, TooltipRenderProps, EVENTS } from "react-joyride";
 import { Document, Page, pdfjs } from "react-pdf";
 import ReactCrop, { Crop, PixelCrop } from "react-image-crop";
 import { useGlobalContext, NodesType, PptxNode, ImgNode, CropNode } from "@/context/global";
@@ -568,10 +568,17 @@ export default function PDFCropMappingStep({
             },
         },
         styles: {
-            options: {
-                overlayColor: 'rgba(15, 23, 42, 0.45)',
-                zIndex: 10000,
+            overlay:{
+                color:'rgba(15, 23, 42, 0.45)',
+                zIndex:100000
             },
+
+            
+            
+            // options: {
+            //     overlayColor: ,
+            //     zIndex: 10000,
+            // },
         },
     });
 
