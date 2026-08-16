@@ -891,7 +891,7 @@ export default function PPTHybridRenderStep() {
                                 key={
                                   isLastSlotOnly
                                     ? `seq_last_slot`
-                                    : `seq_node_${index}_${node?.fileName}_P${node?.page}`
+                                    : `seq_node_${index}_${node?.fileName}_P${(node as any)?.page}`
                                 }
                                 ref={rowVirtualizer.measureElement}
                                 data-index={index}
