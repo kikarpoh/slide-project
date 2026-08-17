@@ -785,7 +785,7 @@ export default function PPTHybridRenderStep() {
         body: JSON.stringify({
           tasks: renderTasks,
           uploadSessionId: uploadSessionId,
-          templatePath: globalState.ppt.serverFileName,
+          templatePath: globalState.ppt.fileName,
         }),
       });
 
