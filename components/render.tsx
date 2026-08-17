@@ -537,11 +537,17 @@ export default function PPTHybridRenderStep() {
     },
   });
 
-  const pdfTargetName = globalState.ppt?.pdfName || globalState.ppt?.fileName;
-  const pdfReadUrl = pdfTargetName
-    ? getMediaUrl({ fileName: pdfTargetName, url: globalState.ppt?.url })
-    : globalState.ppt?.url;
+  
+  // const pdfTargetName = globalState.ppt?.pdfName || globalState.ppt?.fileName;
+  // console.log(pdfTargetName)
+  // const pdfReadUrl = pdfTargetName
+  //   ? getMediaUrl({ fileName: pdfTargetName, url: globalState.ppt?.url })
+  //   : globalState.ppt?.url;
 
+  const pdfReadUrl = globalState.ppt.url
+
+
+    console.log(pdfReadUrl)
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
   );
